@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { User } from '../login/user.model';
 
 export interface AuthResponseData{
   token: string,
@@ -18,6 +19,7 @@ export interface AuthResponseData{
 export class AuthService {
   private loginUrl = 'https://developer.webstar.hu/rest/frontend-felveteli/v2/authentication/'
   private applicantId = 'ZhYjy245'
+  user = new BehaviorSubject<User | null>(null)
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -31,30 +33,31 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(respData =>
-          this.handleLogin(respData.token, respData.refreshToken, respData.user)
+          this.handleLogin(respData)
         )
     );
   }
-  private handleLogin(token: string, refreshToken: string, user: AuthResponseData["user"] ): void {
-    throw new Error('Method not implemented.');
+
+  private handleLogin(resp: AuthResponseData ): void {
+    localStorage.setItem('token', resp.token);
+    localStorage.setItem('refreshToken', resp.refreshToken);
+    const user = new User(resp.user.email, resp.user.firstName, resp.user.lastName)
+    this.user.next(user)
   }
 
   private handleError(errorResp: HttpErrorResponse){
     let errorMessage = 'Ismeretlen hiba történt.'
-    if (!errorResp.error || !errorResp.error.error){
-      return throwError(errorMessage)
-    }
-    switch (errorResp.error.status) {
+    switch (errorResp.status) {
       case 400:
-        errorMessage = 'Hiba bejelentkezéskor.'
-        break
+        errorMessage = 'Hiba bejelentkezéskor.';
+        break;
       case 405:
-        errorMessage = 'Hiba bejelentkezéskor.'
-        break
+        errorMessage = 'Hiba bejelentkezéskor.';
+        break;
       case 500:
-        errorMessage = errorResp.error.error.message
-        break
+        errorMessage = errorResp.error.error;
+        break;
     }
-    return throwError(errorMessage)
+    return throwError(errorMessage);
   }
 }
