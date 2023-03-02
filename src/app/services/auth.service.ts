@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from '../login/user.model';
+import * as moment from 'moment';
 
 export interface AuthResponseData{
   token: string,
@@ -40,6 +41,8 @@ export class AuthService {
 
   private handleLogin(resp: AuthResponseData ): void {
     localStorage.setItem('token', resp.token);
+    const expiresAt = moment().add(1200,'second');
+    localStorage.setItem('expiresAt', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('refreshToken', resp.refreshToken);
     const user = new User(resp.user.email, resp.user.firstName, resp.user.lastName)
     this.user.next(user)
@@ -59,5 +62,25 @@ export class AuthService {
         break;
     }
     return throwError(errorMessage);
+  }
+
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem("expiresAt");
+    const expiresAt = JSON.parse(expiration!);
+    return moment(expiresAt);
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expires_at");
+    localStorage.removeItem("refreshToken");
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
   }
 }
