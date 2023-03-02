@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  errorMessage: string | null = null;
   loginForm = new FormGroup({
     "username": new FormControl("", Validators.required),
     "password": new FormControl("", Validators.required)
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.value.password!;
       this.authService.login(username, password).subscribe(
         (res) => console.log(res),
-        (err) => console.log(err));
+        (err) => this.errorMessage = err)
     }
   }
 
