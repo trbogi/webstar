@@ -1,1 +1,23 @@
-<p>characters works!</p>
+<ng-container *ngIf="characters.length">
+    <div class="details">
+        <div class="upper-container">
+            <div class="badges">
+                <div class="side">{{selectedCharacter.side}}</div>
+                <div class="force">{{selectedCharacter.force.power}}</div>
+            </div>
+            <div class="pagination">dots
+                <button type="button">Previous</button>
+                <button type="button">Next</button>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="character-details">
+                <h1 id="name" [innerHTML]="selectedCharacter.name"></h1>
+                <p class="description">{{selectedCharacter.description}}</p>
+            </div>
+            <div class="moduls">modulok</div>
+            <div class="image">Image</div>
+        </div>
+    </div>
+</ng-container>
+
