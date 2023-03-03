@@ -5,9 +5,10 @@
                 <div class="side">{{selectedCharacter.side}}</div>
                 <div class="force">{{selectedCharacter.force.power}}</div>
             </div>
-            <div class="pagination">dots
-                <button type="button">Previous</button>
-                <button type="button">Next</button>
+            <div class="pagination">
+                dots
+                <button type="button" *ngIf="!isSelectedFirst()" (click)="getPreviousCharacter()">Previous</button>
+                <button type="button" *ngIf="!isSelectedLast()" (click)="getNextCharacter()">Next</button>
             </div>
         </div>
         <div class="bottom-container">

@@ -10,6 +10,7 @@ import { CharactersService } from '../services/characters.service';
 export class CharactersComponent implements OnInit {
   characters: Character[] = [];
   selectedCharacter! : Character;
+  indexOfSelectedCharacter: number = 0;
 
   constructor(private charactersService: CharactersService) { }
 
@@ -23,6 +24,26 @@ export class CharactersComponent implements OnInit {
       this.characters = characters.characters;
       this.selectedCharacter = this.characters[0];
     });
+  }
+
+  getPreviousCharacter(): void{
+    if (this.isSelectedFirst()) return;
+    this.selectedCharacter = this.characters.at(this.indexOfSelectedCharacter - 1)!;
+    this.indexOfSelectedCharacter = this.indexOfSelectedCharacter - 1;
+  }
+
+  getNextCharacter(): void{
+    if (this.isSelectedLast()) return;
+    this.selectedCharacter = this.characters.at(this.indexOfSelectedCharacter + 1)!;
+    this.indexOfSelectedCharacter = this.indexOfSelectedCharacter + 1;
+  }
+
+  isSelectedFirst(): boolean{
+    return this.indexOfSelectedCharacter === 0;
+  }
+
+  isSelectedLast(): boolean{
+    return this.indexOfSelectedCharacter  === this.characters.length -1;
   }
 
 }
