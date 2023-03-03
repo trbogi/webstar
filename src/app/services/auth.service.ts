@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
-import { User } from '../login/user.model';
+import { User } from '../models/user.model';
 import * as moment from 'moment';
 
 export interface AuthResponseData{
