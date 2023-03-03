@@ -13,7 +13,7 @@ export class AuthTokenInterceptor {
         if (this.authService.isLoggedIn()){
             token = localStorage.getItem("token");
             const cloned = req.clone({
-                headers: req.headers.set("Authorization",
+                headers: req.headers.set("Application-Authorization",
                     "Bearer " + token)
             });
             return next.handle(cloned);
