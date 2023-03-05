@@ -1,2 +1,7 @@
-<router-outlet></router-outlet>
-<footer>Webstar Csoport Kft. - &#169; Minden jog fenntartva</footer>
+<div class="app-container" [ngStyle]="{'background-image': 'url(' + backgroundImagePath + ')'}">
+    <header>Header</header>
+    <div class="content">
+        <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+    </div>
+    <footer>Webstar Csoport Kft. - &#169; Minden jog fenntartva</footer>
+</div>
