@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Distant-Galaxy";
+    src: url("./assets/fonts/SfDistantGalaxyAltoutline-e2Bp.ttf");
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins-Black.ttf");
+    color: black;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins-Bold.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins-Extrabold.ttf");
+    font-weight: 900;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins-Medium.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins-Regular.ttf");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Starjedi";
+    src: url("./assets/fonts/Starjedi.ttf");
+}
