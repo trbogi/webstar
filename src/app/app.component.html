@@ -3,9 +3,9 @@
         <header>
             <div class="user">
                 <img src="../assets/images/user.png" alt="user">
-                <span>User name</span>
+                <span>{{user?.lastName}} {{user?.firstName}}</span>
             </div>
-            <div class="logout">
+            <div class="logout" (click)="logout()">
                 <span>Űrhajó elhagyása</span>
                 <img src="../assets/images/logout.png" alt="logout">
             </div>

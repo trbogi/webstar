@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from '../models/user.model';
 
@@ -26,7 +27,7 @@ export class AuthService {
     'Applicant-Id': this.applicantId
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string){
     return this.http.post<AuthResponseData>(this.loginUrl, {username, password}, {headers: this.headers})
@@ -66,8 +67,9 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.clear();
+    this.user.next(null);
+    this.router.navigate(['/login']);
   }
 
   getUser(): void {
