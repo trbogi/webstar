@@ -8,6 +8,7 @@ import { CharactersService } from '../services/characters.service';
   styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
+  backgroundImagePath: string = '/../assets/images/backgrounds/bg_2@2x.png';
   characters: Character[] = [];
   selectedCharacter! : Character;
   indexOfSelectedCharacter: number = 0;
