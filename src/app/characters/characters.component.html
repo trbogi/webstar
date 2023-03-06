@@ -2,23 +2,40 @@
     <div class="details">
         <div class="upper-container">
             <div class="badges">
-                <div class="side">{{selectedCharacter.side}}</div>
-                <div class="force">{{selectedCharacter.force.power}}</div>
+                <div class="side-container">
+                    <div [ngClass]="selectedCharacter.side === 'DARK' ? 'dark-side-square' : 'light-side-square'"></div>
+                    <div class="side-text">
+                        <span class="side">Oldal</span>
+                        <span class="character-side">{{selectedCharacter.side | sideTransform}}</span>
+                    </div>
+                </div>
+                <div class="force-container">
+                    <div class="force-star"><img src="../../assets/images/star.svg" alt="star"></div>
+                    <div class="force-text">
+                        <span class="force">Különleges erő</span>
+                        <span class="character-force">{{selectedCharacter.force.power}}</span>
+                    </div>
+                </div>
             </div>
             <div class="pagination">
-                dots
-                <button type="button" *ngIf="!isSelectedFirst()" (click)="getPreviousCharacter()">Previous</button>
-                <button type="button" *ngIf="!isSelectedLast()" (click)="getNextCharacter()">Next</button>
+                <ng-container *ngFor="let c of characters; index as i">
+                    <span class="dot" [ngClass]="indexOfSelectedCharacter === i ? 'circle-dot' : ''">&bull;</span>
+                </ng-container>
+                <img class="arrow-left" src="../../assets/images/arrow_circle@2x.png" alt="arrow-left" [style.opacity]="isSelectedFirst() ? '0' : '1'" (click)="getPreviousCharacter()">
+                <img class="arrow-right" src="../../assets/images/arrow_circle@2x.png" alt="arrow-right" [style.opacity]="isSelectedLast() ? '0' : '1'" (click)="getNextCharacter()">
             </div>
         </div>
         <div class="bottom-container">
             <div class="character-details">
-                <h1 id="name" [innerHTML]="selectedCharacter.name"></h1>
-                <p class="description">{{selectedCharacter.description}}</p>
+                <div class="name" [innerHTML]="selectedCharacter.name"></div>
+                <div class="description">{{selectedCharacter.description}}</div>
+                <div class="moduls">modulok</div>
             </div>
-            <div class="moduls">modulok</div>
-            <div class="image">
-                <img src="/assets/images/characters/{{selectedCharacter.id}}.png" alt="selectedCharacter.id">
+            <div class="image-container">
+                <div class="circle">
+                    <img src="/assets/images/characters/{{selectedCharacter.id}}.png" alt="selectedCharacter.id">
+                </div>
+                
             </div>
         </div>
     </div>

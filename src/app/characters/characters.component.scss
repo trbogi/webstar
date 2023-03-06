@@ -1,0 +1,152 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.details{
+    @include flexCenter;
+}
+
+.upper-container{
+    @include justifyBetween;
+    width: 100%;
+}
+
+.badges{
+    @include justifyBetween;
+    color: $white;
+    font-size: 16px;
+}
+
+.side-container{
+    @include justifyBetween;
+    margin-right: 66px;
+    .dark-side-square{
+        height: 36px;
+        width: 36px;
+        border: 8px solid $white;
+        margin-right: 18px;
+        background-color: $black;
+    }
+    .light-side-square{
+        height: 36px;
+        width: 36px;
+        border: 8px solid $gray;
+        margin-right: 18px;
+        background-color: $white;
+    }
+    .side-text{
+        display: flex;
+        flex-direction: column;
+        .side{
+            font-family: 'Poppins';
+            font-weight: bold;
+            color: $yellow;
+            text-transform: uppercase;
+        }
+        .character-side{
+            font-family: 'Poppins-Black';
+            font-size: 20px;
+        }        
+    }
+}
+
+.force-container{
+    @include justifyBetween;
+    .force-star{
+        background-color: $yellow;
+        height: 52px;
+        width: 52px;
+        margin-right: 18px;
+        @include flexCenter;
+        img{
+            height: 32px;
+            width: 32px;
+        }
+    }
+    .force-text{
+        display: flex;
+        flex-direction: column;
+        .force{
+            font-family: 'Poppins';
+            font-weight: bold;
+            color: $yellow;
+            text-transform: uppercase;
+        }
+        .character-force{
+            font-family: 'Poppins-Black';
+            font-size: 20px;
+        }
+    }
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    .dot {
+        font-size: 12px;
+        padding-right: 4px;
+        padding-left: 4px;
+        line-height: 1;
+        margin-left: 2px;
+        color: $gray;
+    }
+    
+    .circle-dot{
+        border-radius: 50%;
+        border: 1px solid $white;
+    }
+    img{
+        height: 52px;
+        margin-left: 18px;
+        cursor: pointer;
+    }
+    .arrow-right{
+        transform: rotate(180deg);
+    }
+}
+
+.bottom-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.character-details{
+    width: 50%;
+    margin-top: 32px;
+}
+
+.image-container{
+    width: 50%;
+    .circle{
+        float: right;
+        background-color: $yellow;
+        border-radius: 50%;
+        height: 412px;
+        width: 412px;
+        margin-top: 116px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    img{
+        height: 600px;
+    }
+}
+
+.name{
+    word-wrap: break-word;
+    font-family: 'Starjedi';
+    font-size: 90px;
+    color: $white;
+    margin: 0;
+    line-height: 1;
+}
+
+.description{
+    font-family: 'Poppins';
+    font-weight: normal;
+    color: $white;
+    margin-top: 16px;
+}
+
