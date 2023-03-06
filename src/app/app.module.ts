@@ -10,12 +10,14 @@ import { AuthTokenInterceptor } from './login/authTokenInterceptor';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { CharactersComponent } from './characters/characters.component';
+import { SideTransformPipe } from './pipes/side-transform.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CharactersComponent
+    CharactersComponent,
+    SideTransformPipe
   ],
   imports: [
     BrowserModule,
