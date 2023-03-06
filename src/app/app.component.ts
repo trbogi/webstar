@@ -10,7 +10,6 @@ export class AppComponent {
   backgroundImagePath!: string;
 
   onRouterOutletActivate($event: any) {
-    console.log($event.backgroundImagePath)
     this.backgroundImagePath = $event.backgroundImagePath;
   }
 }

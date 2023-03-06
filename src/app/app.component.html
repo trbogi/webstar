@@ -1,7 +1,18 @@
 <div class="app-container" [ngStyle]="{'background-image': 'url(' + backgroundImagePath + ')'}">
-    <header>Header</header>
-    <div class="content">
-        <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+    <div class="main">
+        <header>
+            <div class="user">
+                <img src="../assets/images/user.png" alt="user">
+                <span>User name</span>
+            </div>
+            <div class="logout">
+                <span>Űrhajó elhagyása</span>
+                <img src="../assets/images/logout.png" alt="logout">
+            </div>
+        </header>
+        <div class="content">
+            <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+        </div>
     </div>
     <footer>Webstar Csoport Kft. - &#169; Minden jog fenntartva</footer>
 </div>
