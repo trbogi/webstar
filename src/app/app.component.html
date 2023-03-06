@@ -3,7 +3,7 @@
         <header>
             <div class="user">
                 <img src="../assets/images/user.png" alt="user">
-                <span>{{user?.lastName}} {{user?.firstName}}</span>
+                <span>{{user?.lastName | titlecase}} {{user?.firstName | lowercase}}</span>
             </div>
             <div class="logout" (click)="logout()">
                 <span>Űrhajó elhagyása</span>
