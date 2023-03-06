@@ -1,12 +1,12 @@
-<div>
-    <h1>Webstar</h1>
-    <h2>frontend</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+<div class="container">
+    <h1 class="title-1">Webstar</h1>
+    <h1 class="title-2">frontend</h1>
+    <form [formGroup]="loginForm">
         <label for="username">Felhasználónév</label>
         <input type="text" formControlName="username" name="username"/>
         <label for="password">Jelszó</label>
         <input type="password" formControlName="password"  name="password"/>
-        <button type="submit" [disabled]="!loginForm.valid">Bejelentkezés</button>
+        <div class="button" (click)="login()">Belépés</div>
     </form>
-    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+    <span class="error-message" *ngIf="errorMessage">{{ errorMessage }}</span>
 </div>

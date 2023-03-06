@@ -9,10 +9,11 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  backgroundImagePath: string = '/../assets/images/backgrounds/bg_1@2x.png';
   errorMessage: string | null = null;
   loginForm = new FormGroup({
-    "username": new FormControl("", Validators.required),
-    "password": new FormControl("", Validators.required)
+    'username': new FormControl('', Validators.required),
+    'password': new FormControl('', Validators.required)
   });
 
   constructor(private authService: AuthService, private router: Router) { }
