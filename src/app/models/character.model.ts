@@ -1,11 +1,12 @@
-export interface Character{
-    id: string,
-    name: string,
-    side: string,
-    force: {
+export class Character{
+    constructor(
+    public id: string,
+    public name: string,
+    public side: string,
+    public force: {
         power: string,
         midichlorian: number
     },
-    createdTimestamp : number,
-    description : string
+    public createdTimestamp : number,
+    public description : string){}
 }

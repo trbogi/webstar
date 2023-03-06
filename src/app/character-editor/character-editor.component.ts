@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Character } from '../models/character.model';
+import { CharactersService } from '../services/characters.service';
 
 @Component({
   selector: 'app-character-editor',
@@ -6,9 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-editor.component.scss']
 })
 export class CharacterEditorComponent implements OnInit {
+  backgroundImagePath: string = '/../assets/images/backgrounds/bg_2@2x.png';
+  characters: Character[] = [];
+
+  constructor(private charactersService: CharactersService) { }
+
   ngOnInit(): void {
-    
+    this.getCharacters();
   }
 
+  getCharacters(): void {
+    this.charactersService.getCharacters()
+    .subscribe(characters => {
+      this.characters = characters.characters;
+    });
+  }
+
+  deleteCharacter(timestamp: number): void{
+    this.characters = this.characters.filter((char) => char.createdTimestamp !== timestamp);
+  }
+
+  duplicateCharacter(timestamp: number): void{
+    const character = this.characters.find((char) => char.createdTimestamp !== timestamp);
+    if (character){
+      const timestampForNewChar = Date.now();
+      const newCharacter = new Character(character.id, character.name, character.side, character.force, timestampForNewChar, character.description);
+    }
+   }
+
+   updateCharacter(timestamp: number, updatedChar: Character): void{
+      this.characters = this.characters.map((oldChar) => oldChar.createdTimestamp === timestamp ? updatedChar : oldChar);
+   }
 
 }
