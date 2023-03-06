@@ -11,13 +11,15 @@ import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { CharactersComponent } from './characters/characters.component';
 import { SideTransformPipe } from './pipes/side-transform.pipe';
+import { CharacterEditorComponent } from './character-editor/character-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CharactersComponent,
-    SideTransformPipe
+    SideTransformPipe,
+    CharacterEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-editor.component.scss']
 })
 export class CharacterEditorComponent implements OnInit {
-  backgroundImagePath: string = '/../assets/images/backgrounds/bg_2@2x.png';
-
-  constructor() { }
-
   ngOnInit(): void {
+    
   }
+
 
 }
