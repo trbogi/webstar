@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from '../models/user.model';
-import * as moment from 'moment';
 
 export interface AuthResponseData{
   token: string,
@@ -20,7 +19,7 @@ export interface AuthResponseData{
 export class AuthService {
   private loginUrl = 'https://developer.webstar.hu/rest/frontend-felveteli/v2/authentication/'
   private applicantId = 'ZhYjy245'
-  user = new BehaviorSubject<User | null>(null)
+  user = new BehaviorSubject<User | null>(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null);
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -41,11 +40,9 @@ export class AuthService {
 
   private handleLogin(resp: AuthResponseData ): void {
     localStorage.setItem('token', resp.token);
-    const expiresAt = moment().add(1200,'second');
-    localStorage.setItem('expiresAt', JSON.stringify(expiresAt.valueOf()));
-    localStorage.setItem('refreshToken', resp.refreshToken);
-    const user = new User(resp.user.email, resp.user.firstName, resp.user.lastName)
-    this.user.next(user)
+    const user = new User(resp.user.email, resp.user.firstName, resp.user.lastName);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user.next(user);
   }
 
   private handleError(errorResp: HttpErrorResponse){
@@ -64,23 +61,21 @@ export class AuthService {
     return throwError(errorMessage);
   }
 
-  public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+  public isLoggedIn(): boolean {
+    return localStorage.getItem('token') !== null;
   }
 
-  getExpiration() {
-    const expiration = localStorage.getItem("expiresAt");
-    const expiresAt = JSON.parse(expiration!);
-    return moment(expiresAt);
-  }
-
-  logout() {
+  logout(): void {
     localStorage.removeItem("token");
-    localStorage.removeItem("expires_at");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
   }
 
-  isLoggedOut() {
-    return !this.isLoggedIn();
+  getUser(): void {
+    if (this.isLoggedIn()){
+      const user = JSON.parse(localStorage.getItem('user')!);
+      this.user.next(user);
+    }else{
+      this.user.next(null);
+    }
   }
 }
