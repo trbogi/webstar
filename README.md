@@ -1,27 +1,62 @@
 # Webstar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+## Table of contents
 
-## Development server
+- [The project](#the-project)
+- [Challanges](#challanges)
+- [Prerequisites](#prerequisites)
+- [Run project locally](#run-project-locally)
+- [Built with](#built-with)
+- [Links](#links)
+- [Author](#author)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## The project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This a homework project for Webstar Csoport Kft. In this mini web application we can browse between Star Wars characters.
 
-## Build
+Features:
+- Authentication
+- Get Star Wars characters though REST API and display them
+- CRUD operations (started but haven't finished yet)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Challanges
 
-## Running unit tests
+Authentication: Before I started working on this project I researched the topic thoroughly, because I wasn't really familiar with JWT authentication. After some coding and searching I realized that the token we got from the backend doesn't contain any real, useful information (information about user, expiration time...). That was the reason I decided to make a simplified authentication. This means that the user is considered authenticated and logged in till they have the token (stored in local storage), that is until they log out.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Design: This was the first project when I used Sass. I tried my best but I know it has a lot more features I haven't even used. 
+It gave me some hard time but it was a really exciting experience to work on a project where there are graphics and design plans in advance.
 
-## Running end-to-end tests
+## Prerequisites
+To run this project locally you need the following installed on your computer:
+- Node.js
+- The Angular CLI
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Run project locally
+1. Download or clone the repository to your local machine:
 
-## Further help
+    $ git clone https://github.com/trbogi/webstar.git
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+2. Run npm install inside the downloaded/cloned folder:
+
+    $ npm install
+
+3. Run ng serve inside the downloaded/cloned folder:
+
+    $ ng serve
+
+## Built with
+
+- [Angular](https://angular.io/)
+- [Sass](https://sass-lang.com/)
+
+## Links
+
+- GitHub repo: [https://github.com/trbogi/webstar](https://github.com/trbogi/webstar)
+
+## Author
+
+- GitHub - [trbogi](https://github.com/trbogi)
+- LinkedIn - [Trencsényi Boglárka](https://www.linkedin.com/in/bogl%C3%A1rka-trencs%C3%A9nyi-16649720b/)
+- E-mail - trencsenyi.bogi@gmail.com
