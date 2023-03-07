@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from '../models/character.model';
 import { CharactersService } from '../services/characters.service';
 
@@ -13,7 +14,7 @@ export class CharactersComponent implements OnInit {
   selectedCharacter! : Character;
   indexOfSelectedCharacter: number = 0;
 
-  constructor(private charactersService: CharactersService) { }
+  constructor(private charactersService: CharactersService,private router: Router) { }
 
   ngOnInit(): void {
     this.getCharacters();
@@ -45,6 +46,10 @@ export class CharactersComponent implements OnInit {
 
   isSelectedLast(): boolean{
     return this.indexOfSelectedCharacter  === this.characters.length -1;
+  }
+
+  goToEditor(): void {
+    this.router.navigate(['/editor']);
   }
 
 }

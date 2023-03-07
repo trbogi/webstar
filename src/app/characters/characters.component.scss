@@ -109,45 +109,67 @@
     flex-direction: row;
     justify-content: space-between;
     max-width: 100%;
+    .character-details{
+        width: 50%;
+        margin-top: 32px;
+        .name{
+            word-wrap: break-word;
+            font-family: 'Starjedi';
+            font-size: 90px;
+            color: $white;
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .description{
+            font-family: 'Poppins';
+            font-weight: normal;
+            color: $white;
+            margin-top: 16px;
+        }
+    }
+    .image-container{
+        width: 50%;
+        .circle{
+            float: right;
+            background-color: $yellow;
+            border-radius: 50%;
+            height: 412px;
+            width: 412px;
+            margin-top: 116px;
+            margin-bottom: 116px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+        img{
+            height: 600px;
+        }
+    }
 }
 
-.character-details{
-    width: 50%;
+.moduls{
+    font-family: 'Poppins-Black';
+    font-size: 24px;
+    color: $white;
     margin-top: 32px;
-}
-
-.image-container{
-    width: 50%;
-    .circle{
-        float: right;
-        background-color: $yellow;
-        border-radius: 50%;
-        height: 412px;
-        width: 412px;
-        margin-top: 116px;
-        margin-bottom: 116px;
-        display: flex;
-        justify-content: end;
-        align-items: center;
+    table{
+        width: 100%;
     }
-    img{
-        height: 600px;
+    .modul-title{
+        font-family: 'Poppins';
+        font-weight: bold;
+        font-size: 18px;
     }
-}
-
-.name{
-    word-wrap: break-word;
-    font-family: 'Starjedi';
-    font-size: 90px;
-    color: $white;
-    margin: 0;
-    line-height: 1;
-}
-
-.description{
-    font-family: 'Poppins';
-    font-weight: normal;
-    color: $white;
-    margin-top: 16px;
+    .modul-subtitle{
+        font-family: 'Poppins';
+        font-weight: normal;
+        font-size: 16px;
+    }
+    .navigation-button{
+        @include secondaryButton;
+        width: fit-content;
+    }
+    
 }
 

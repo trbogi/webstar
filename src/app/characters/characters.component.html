@@ -29,7 +29,19 @@
             <div class="character-details">
                 <div class="name" [innerHTML]="selectedCharacter.name"></div>
                 <div class="description">{{selectedCharacter.description}}</div>
-                <div class="moduls">modulok</div>
+                <div class="moduls">
+                    Modulok
+                    <table>
+                        <tr>
+                          <td class="modul-title">CRUD kezelés</td>
+                          <td class="modul-subtitle">Karakterszerkesztő megnyitása</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td><div class="navigation-button" (click)="goToEditor()">Karakterek szerkesztése</div></td>
+                        </tr>
+                      </table>
+                </div>
             </div>
             <div class="image-container">
                 <div class="circle">
