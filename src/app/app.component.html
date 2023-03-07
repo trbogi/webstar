@@ -1,6 +1,6 @@
 <div class="app-container" [ngStyle]="{'background-image': 'url(' + backgroundImagePath + ')'}">
     <div class="main">
-        <header>
+        <header [ngStyle]="{'display': isLoginComponent ?'none': 'flex'}">
             <div class="user">
                 <img src="../assets/images/user.png" alt="user">
                 <span>{{user?.lastName | titlecase}} {{user?.firstName | lowercase}}</span>

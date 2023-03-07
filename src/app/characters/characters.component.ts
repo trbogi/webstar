@@ -16,10 +16,10 @@ export class CharactersComponent implements OnInit {
   constructor(private charactersService: CharactersService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getCharacters();
   }
 
-  getHeroes(): void {
+  getCharacters(): void {
     this.charactersService.getCharacters()
     .subscribe(characters => {
       this.characters = characters.characters;

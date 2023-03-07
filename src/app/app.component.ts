@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { User } from './models/user.model';
 import { AuthService } from './services/auth.service';
 
@@ -9,14 +10,14 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isLoginComponent: boolean = false;
   user: User | null | undefined;
   backgroundImagePath!: string;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.authService.user.subscribe((user) => this.user = user);
-    console.log(this.user)
   }
 
   logout(): void {
@@ -24,6 +25,7 @@ export class AppComponent {
   }
 
   onRouterOutletActivate($event: any): void {
+    this.isLoginComponent = $event instanceof LoginComponent;
     this.backgroundImagePath = $event.backgroundImagePath;
   }
 }
