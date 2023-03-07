@@ -47,4 +47,8 @@ export class CharacterEditorComponent implements OnInit {
       this.characters = this.characters.map((oldChar) => oldChar.createdTimestamp === timestamp ? updatedChar : oldChar);
    }
 
+   goBack(){
+    this.router.navigate(['/characters']);
+ }
+
 }
