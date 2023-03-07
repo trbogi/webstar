@@ -19,6 +19,6 @@ export class CharactersService {
 
   getCharacters(): Observable<{characters: Character[]}> {
     return this.http.get<any>(this.charactersUrl, {headers: this.headers})
-        .pipe(tap(resp => console.log(resp)), catchError(err => throwError(err)))
+        .pipe(tap(resp => resp.characters), catchError(err => throwError(err)))
   }
 }
