@@ -1,1 +1,36 @@
-<p>character-editor works!</p>
+<ng-container *ngIf="characters.length">
+    <div class="operations">
+        <div class="chevron-title">
+          <img src="../../assets/images/chevron.svg" alt="back" (click)="goBack()">
+          <span class="title">Karakterek szerkesztése</span>
+        </div>
+        <div class="add-button">Új karakter hozzáadása</div>
+    </div>
+    <table>
+        <thead>
+          <tr>
+            <th>Név</th>
+            <th>Oldal</th>
+            <th>Különleges erő</th>
+            <th>Midiklorián</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+            <ng-container *ngFor="let char of characters; index as i">
+                <tr>
+                    <td>{{char.name}}</td>
+                    <td>{{char.side | sideTransform}}</td>
+                    <td>{{char.force.power}}</td>
+                    <td>{{char.force.midichlorian}}</td>
+                    <td class="operation-label copy" (click)="duplicateCharacter(char.createdTimestamp)">Másolás</td>
+                    <td class="operation-label update">Módosítás</td>
+                    <td class="operation-label delete" (click)="deleteCharacter(char.createdTimestamp)">Törlés</td>
+                  </tr>
+            </ng-container>
+        </tbody>
+      </table>
+</ng-container>
