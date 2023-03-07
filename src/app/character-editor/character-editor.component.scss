@@ -1,0 +1,83 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.operations{
+    @include justifyBetween;
+    margin: 14px 0;
+    align-items: center;
+    .chevron-title{
+        @include justifyBetween;
+        align-items: center;
+        .title{
+            font-family: 'Poppins-Black';
+            font-size: 24px;
+            color: $white;
+            padding-left: 16px;
+        }
+        img{
+            height: 24px;
+            cursor: pointer;
+        }
+    }
+}
+
+.add-button{
+    @include secondaryButton;
+}
+
+table{
+    width: 100%;
+    color: $white;
+    font-size: 16px;
+    border-collapse: collapse;
+    thead{
+        font-family: 'Poppins';
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: left;
+        tr{
+            border-bottom: 1px solid $yellow;
+        }   
+    }
+    tbody{
+        font-family: 'Poppins';
+        font-weight: normal;
+        tr{
+            &:hover{
+                background-color: $black;
+                opacity: 0.8;
+            }
+            &:hover .operation-label{
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.operation-label{
+    font-family: 'Poppins';
+    font-weight: bold;
+    opacity: 0;
+}
+
+.copy{
+    color: $white;
+}
+
+.update{
+    color: $yellow;
+}
+.delete{
+    color: $red;
+}
+
+tr {
+    th, td{
+        padding: 9px 0 9px 20px;
+    }
+    td{
+        border-bottom: 1px solid $gray;
+    }
+
+}
