@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from '../models/character.model';
 import { CharactersService } from '../services/characters.service';
 
@@ -11,7 +12,7 @@ export class CharacterEditorComponent implements OnInit {
   backgroundImagePath: string = '/../assets/images/backgrounds/bg_2@2x.png';
   characters: Character[] = [];
 
-  constructor(private charactersService: CharactersService) { }
+  constructor(private charactersService: CharactersService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCharacters();
@@ -20,7 +21,12 @@ export class CharacterEditorComponent implements OnInit {
   getCharacters(): void {
     this.charactersService.getCharacters()
     .subscribe(characters => {
-      this.characters = characters.characters;
+      let chars = characters.characters;
+      chars = chars.map((c) => {
+        c.name = c.name.replace('<br>', ' ');
+        return c;
+      });
+      this.characters = chars;
     });
   }
 
@@ -29,10 +35,11 @@ export class CharacterEditorComponent implements OnInit {
   }
 
   duplicateCharacter(timestamp: number): void{
-    const character = this.characters.find((char) => char.createdTimestamp !== timestamp);
+    const character = this.characters.find((char) => char.createdTimestamp === timestamp);
     if (character){
       const timestampForNewChar = Date.now();
       const newCharacter = new Character(character.id, character.name, character.side, character.force, timestampForNewChar, character.description);
+      this.characters = [...this.characters,newCharacter];
     }
    }
 
