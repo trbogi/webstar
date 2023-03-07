@@ -9,3 +9,18 @@
     display: flex;
     justify-content: space-between;
 }
+
+@mixin mediumBorderRadius{
+    border-radius: 0.5rem;
+}
+
+@mixin secondaryButton{
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 16px;
+    color: $white;
+    @include mediumBorderRadius;
+    border: 2px solid $yellow;
+    padding: 8px 22px;
+    cursor: pointer;
+}
