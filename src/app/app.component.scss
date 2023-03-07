@@ -2,17 +2,18 @@
 @import './../styles/mixins';
 
 .app-container{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: relative;
+    min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    overflow: auto;
 }
 
 .main{
-    max-width: 1154px;
+    width: 1154px;
     margin: auto;
+    padding-bottom: $footerHeight; 
 }
 
 header{
@@ -46,7 +47,7 @@ header{
 
 
 .content {
-    //flex: 1 0 auto;
+    width: 100%;
 }
 
 footer{
@@ -55,6 +56,10 @@ footer{
     font-size: 12px;
     text-align: right;
     color: $white;
-    padding: 10px;
-    //flex-shrink: 0;
+    padding-right: 10px;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footerHeight; 
 }
